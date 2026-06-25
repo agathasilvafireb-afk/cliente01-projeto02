@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Senhas Jazz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title">Gerador de Senhas</h1>
+    </section>
+
+    <section class="generator-card" aria-label="Gerador de senhas">
+      <div class="topbar">
+        <div>
+          <span class="label">Senha gerada</span>
+          <p id="status-message" class="status-message" role="status" aria-live="polite">Ajuste as opcoes e gere uma senha.</p>
+        </div>
+
+        <label class="theme-toggle" for="theme-toggle">
+          <input id="theme-toggle" type="checkbox" aria-label="Alternar tema claro ou escuro">
+          <span class="toggle-track" aria-hidden="true">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span class="toggle-text">Tema claro</span>
+        </label>
+      </div>
+
+      <div class="password-display">
+        <output id="password-output" aria-label="Senha gerada">Clique em gerar</output>
+      </div>
+
+      <div class="actions">
+        <button id="generate-button" class="button button-primary" type="button" aria-label="Gerar nova senha">
+          Gerar Nova
+        </button>
+        <button id="copy-button" class="button button-secondary" type="button" aria-label="Copiar senha gerada">
+          Copiar
+        </button>
+      </div>
+
+      <div class="strength-panel" aria-label="Medidor de forca da senha">
+        <div class="strength-head">
+          <span>Forca</span>
+          <strong id="strength-label">-</strong>
+        </div>
+        <div class="meter" aria-hidden="true">
+          <span id="strength-bar"></span>
+        </div>
+        <p class="entropy">Entropia: <strong id="entropy-value">0 bits</strong></p>
+      </div>
+
+      <form class="settings" aria-label="Configuracoes da senha">
+        <div class="length-row">
+          <label for="length-range">Comprimento</label>
+          <div class="length-controls">
+            <input id="length-range" type="range" min="8" max="64" value="12" aria-label="Comprimento da senha">
+            <input id="length-number" type="number" min="8" max="64" value="12" aria-label="Comprimento da senha em numero">
+          </div>
+        </div>
+
+        <fieldset class="options">
+          <legend>Tipos de caracteres</legend>
+
+          <label class="option">
+            <input id="uppercase" type="checkbox" checked>
+            <span>Maiusculas</span>
+          </label>
+          <label class="option">
+            <input id="lowercase" type="checkbox" checked>
+            <span>Minusculas</span>
+          </label>
+          <label class="option">
+            <input id="numbers" type="checkbox" checked>
+            <span>Numeros</span>
+          </label>
+          <label class="option">
+            <input id="symbols" type="checkbox" checked>
+            <span>Especiais (!@#$%...)</span>
+          </label>
+          <label class="option option-wide">
+            <input id="avoid-ambiguous" type="checkbox">
+            <span>Evitar caracteres ambiguos (il1Lo0O)</span>
+          </label>
+        </fieldset>
+      </form>
+
+      <section class="history" aria-labelledby="history-title">
+        <div class="history-title-row">
+          <h2 id="history-title">Historico recente</h2>
+          <span>Ultimas 5</span>
+        </div>
+        <ol id="history-list" class="history-list" aria-live="polite"></ol>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
